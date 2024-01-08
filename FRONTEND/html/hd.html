@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hot Deals</title>
+  <link rel="stylesheet" href="../css/hd.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    .faicons {
+      gap: 15px;
+    }
+
+    .fa-facebook {
+      margin-left: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bars">
+    <div class="navbar" id="nav1">
+      <ul class="menubar" id="menu">
+        <a href="p1.html" id="a1">
+          <li>HOME</li>
+        </a>
+        <a href="#" id="a1">
+          <li>NEWSROOM</li>
+        </a>
+        <a href="#" id="a1">
+          <li>FAQs</li>
+        </a>
+        <a href="#" id="a1">
+          <li>CONTACT US</li>
+        </a>
+        <div class="faicons">
+          <a href="https://facebook.com" target="_blank"><i class='fa fa-facebook '></i></a>
+
+          <a href="https://instagram.com"><i class='fa fa-instagram'></i></a>
+
+          <a href="https://linkedin.com"><i class='fa fa-linkedin'></i></a>
+
+        </div>
+        <div class="user"> </div>
+      </ul>
+    </div>
+    <div class="bar1"></div>
+    <div class="searchbar" id="ser1">
+      <a href="#" id="i1">
+        <li><img src="../img/i1.jpg" alt="logo"></li>
+      </a>
+      <li id="ss">
+        <label for="fname"></label><br>
+        <input type="text" id="fname" name="fname" value="search for product" width="100px">
+      </li>
+      <a href="#" class="dropdown">
+        <li>
+          <form>
+            <select id="category" name="category">
+              <option value="1">automotive</option>
+              <option value="2">Bathroom & Plumbing</option>
+              <option value="3">Bulding and hardware</option>
+              <option value="4">Electrical & Lighting</option>
+            </select>
+          </form>
+        </li>
+      </a>
+      <button type="button" class="btn btn-primary b1">
+        <i class='fa fa-search fa-lg' class="s2"></i>
+        <div class="l1">
+          <a href="lpage1.html">LOGIN/REGISTER</a>
+        </div>
+        <div><a href="Scart.html" id="lg1">
+            <i class='fa fa-shopping-cart fa-2x lg3'></i></a></div>
+    </div>
+  </div>
+  <header>
+    <h1>Hot Deals</h1>
+  </header>
+  <main>
+    <section class="deals">
+      <div class="deal">
+        <img src="../img/hd/h1.webp" alt="item 1">
+        <p class="Price">790.00 Rs</p>
+        <button onclick="addToCart('../img/hd/h1.jpg', 'item 1', 790)">Add to cart</button>
+      </div>
+      <div class="deal">
+        <img src="../img/hd/h2.webp" alt="item 2">
+       <p class="Price">345.00 Rs</p>
+        <button onclick="addToCart('../img/hd/h2.jpg', 'item 2', 345)">Add to cart</button>
+      </div>
+      <div class="deal">
+        <img src="../img/hd/h3.jpg" alt="item 3">
+       <p class="Price">250.00 Rs</p>
+        <button onclick="addToCart('../img/hd/h3.jpg', 'item 3', 250)">Add to cart</button>
+      </div>
+      <div class="deal">
+        <img src="../img/hd/h4.jpg" alt="item 4">
+       <p class="Price">842.00 Rs</p>
+        <button onclick="addToCart('../img/hd/h4.jpg', 'item 4', 842)">Add to cart</button>
+      </div>
+      <div class="deal">
+        <img src="../img/hd/h5.jpg" alt="item 5">
+       <p class="Price">836.00 Rs</p>
+        <button onclick="addToCart('../img/hd/h5.jpg', 'item 5', 836)">Add to cart</button>
+      </div>
+      <div class="deal">
+        <img src="../img/hd/h6.jpg" alt="item 6">
+       <p class="Price">584.00 Rs</p>
+        <button onclick="addToCart('../img/hd/h6.jpg', 'item 6', 584)">Add to cart</button>
+      </div>
+      <div class="deal">
+        <img src="../img/hd/h7.jpg" alt="item 7">
+       <p class="Price">790.00 Rs</p>
+        <button onclick="addToCart('../img/hd/h7.jpg', 'item 7', 790)">Add to cart</button>
+      </div>
+      <div class="deal">                    
+        <img src="../img/hd/h8.jpg" alt="item 8">
+       <p class="Price">999.00 Rs</p>
+        <button onclick="addToCart('../img/hd/h8.jpg', 'item 8', 999)">Add to cart</button>
+      </div>
+      <div class="deal">
+        <img src="../img/hd/h9.jpg" alt="item 3">
+       <p class="Price">399.00 Rs</p>
+        <button onclick="addToCart('../img/hd/h8.jpg', 'item 9', 399)">Add to cart</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function addToCart(imageSrc, imageAlt, price) {
+            // Create a new item object
+            var item = {
+                src: imageSrc,
+                alt: imageAlt,
+                price: price,
+                quantity: 1,
+            };
+
+            // Retrieve the existing cart items from local storage (if any)
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+            // Check if the item already exists in the cart
+            var existingItem = cartItems.find(function (cartItem) {
+                return cartItem.src === item.src && cartItem.alt === item.alt;
+            });
+
+            if (existingItem) {
+                // If the item already exists, you can show an error message or perform any other logic
+                alert("Item is already in the cart.");
+            } else {
+                // Add the new item to the cart items array
+                cartItems.push(item);
+                // Store the updated cart items in local storage
+                localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                // Redirect the user to the shopping cart page
+                window.location.href = "Scart.html";
+            }
+        }
+
+
+  </script>
+</body>
+
+</html>

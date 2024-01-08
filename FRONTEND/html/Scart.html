@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/Scart.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> 
+</head>
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            /* padding: 20px; */
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+        
+        .remove-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+        
+        .quantity-input {
+            width: 40px;
+        }
+        
+        .price {
+            font-weight: bold;
+        }
+        
+        .checkout-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .faicons{
+            gap: 15px;
+        }
+        .fa-facebook{
+            margin-left: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bars">
+        <div class="navbar" id="nav1">
+            <ul class="menubar" id="menu">
+                <a href="p1.html" id="a1">
+                    <li>HOME</li>
+                </a>
+                <a href="#" id="a1">
+                    <li>NEWSROOM</li>
+                </a>
+                <a href="#" id="a1">
+                    <li>FAQs</li>
+                </a>
+                <a href="#" id="a1">
+                    <li>CONTACT US</li>
+                </a>
+                <div class="faicons">
+                    <a href="https://facebook.com" target="_blank"><i class='fa fa-facebook '></i></a>
+
+                    <a href="https://instagram.com"><i class='fa fa-instagram'></i></a>
+                    
+                    <a href="https://linkedin.com"><i class='fa fa-linkedin'></i></a>
+                    
+                </div>
+                <br>
+                <div class="user"> </div>
+            </ul>
+        </div>
+        <div class="bar1"></div>
+        <div class="searchbar" id="ser1">
+            <a href="#" id="i1">
+                <li><img src="../img/i1.jpg" alt="logo"></li>
+            </a>
+            <li id="ss">
+                <label for="fname"></label><br>
+                <input type="text" id="fname" name="fname" value="search for product" width="100px">
+            </li>
+            <a href="#" class="dropdown">
+                <li>
+                    <form action="/action_page.php">
+                        <select id="category" name="category">
+                            <option value="1">automotive</option>
+                            <option value="2">Bathroom & Plumbing</option>
+                            <option value="3">Bulding and hardware</option>
+                            <option value="4">Electrical & Lighting</option>
+                        </select>
+                    </form>
+                </li>
+            </a>
+            <button type="button" class="btn btn-primary b1">
+                <i class='fa fa-search fa-lg' class="s2"></i>
+                <div class="l1">
+                    <a href="lpage1.html">LOGIN/REGISTER</a>
+                </div>
+                <div><a href="Scart.html" id="lg1">
+                        <i class='fa fa-shopping-cart fa-2x lg3'></i></a></div>
+        </div>
+    </div>
+    
+           
+    <h1>Shopping Cart</h1>
+    
+    <!-- Display the cart items -->
+    <table id="cart-items">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Cart items will be dynamically added here -->
+        </tbody>
+    </table>
+    
+    <script>
+        // Retrieve the cart items from local storage
+        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+      
+        // Get the table body to append the cart items
+        var tableBody = document.querySelector("#cart-items tbody");
+      
+        // Function to remove an item from the cart
+        function removeItem(index) {
+          cartItems.splice(index, 1); // Remove item from the array
+      
+          // Update the cart items in local storage
+          localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      
+          // Remove the table row from the HTML
+          var row = document.getElementById("item-row-" + index);
+          row.parentNode.removeChild(row);
+        }
+      
+        // Function to update the quantity of an item
+        function updateQuantity(index, quantity) {
+          cartItems[index].quantity = quantity; // Update the quantity in the array
+      
+          // Update the cart items in local storage
+          localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      
+          // Update the price cell in the HTML
+          var priceCell = document.getElementById("item-price-" + index);
+          priceCell.textContent = "$" + (cartItems[index].price * quantity).toFixed(2);
+        }
+      
+        // Iterate over each cart item and create a row
+        cartItems.forEach(function (cartItem, index) {
+          // Create a new table row
+          var row = document.createElement("tr");
+          row.id = "item-row-" + index;
+      
+          // Create a table cell for the image
+          var imageCell = document.createElement("td");
+          var image = document.createElement("img");
+          image.src = cartItem.src;
+          image.alt = cartItem.alt;
+          imageCell.appendChild(image);
+      
+          // Create a table cell for the description
+          var descriptionCell = document.createElement("td");
+          descriptionCell.textContent = cartItem.alt;
+      
+          // Create a table cell for the quantity input
+          var quantityCell = document.createElement("td");
+          var quantityInput = document.createElement("input");
+          quantityInput.type = "number";
+          quantityInput.className = "quantity-input";
+          quantityInput.value = cartItem.quantity;
+      
+          // Add event listener to quantity input
+          quantityInput.addEventListener("change", function () {
+            var quantity = parseInt(quantityInput.value);
+            if (quantity > 0) {
+              updateQuantity(index, quantity);
+            }
+          });
+      
+          quantityCell.appendChild(quantityInput);
+      
+          // Create a table cell for the price
+          var priceCell = document.createElement("td");
+          priceCell.className = "price";
+          priceCell.textContent = "Rs " + (cartItem.price * cartItem.quantity).toFixed(2);
+          priceCell.id = "item-price-" + index;
+      
+          // Create a table cell for the remove button
+          var actionCell = document.createElement("td");
+          var removeButton = document.createElement("button");
+          removeButton.textContent = "Remove";
+          removeButton.className = "remove-button";
+      
+          // Add click event listener to remove button
+          removeButton.addEventListener("click", function () {
+            removeItem(index);
+          });
+      
+          actionCell.appendChild(removeButton);
+      
+          // Create a table cell for the individual checkout button
+          var checkoutCell = document.createElement("td");
+          var checkoutButton = document.createElement("button");
+          checkoutButton.textContent = "Checkout";
+          checkoutButton.className = "checkout-button";
+      
+          // Add click event listener to the checkout button
+          checkoutButton.addEventListener("click", function () {
+            // Redirect to the checkout page for the selected item
+            window.location.href = "delivery.html?index=" + index;
+          });
+      
+          checkoutCell.appendChild(checkoutButton);
+      
+          // Append the cells to the row
+          row.appendChild(imageCell);
+          row.appendChild(descriptionCell);
+          row.appendChild(quantityCell);
+          row.appendChild(priceCell);
+          row.appendChild(actionCell);
+          row.appendChild(checkoutCell);
+      
+          // Append the row to the table body
+          tableBody.appendChild(row);
+        });
+
+
+        checkoutButton.addEventListener("click", function () {
+  // Check if the user is logged in
+  if (!isLoggedIn()) {
+    alert("Please log in to proceed with the purchase.");
+    return;
+  }
+
+  // Redirect to the checkout page for the selected item
+  window.location.href = "delivery.html?index=" + index;
+});
+
+
+    </script>
+</body>
+</html>

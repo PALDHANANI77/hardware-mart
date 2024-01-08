@@ -1,0 +1,136 @@
+* {
+    margin-left: 0px;
+    margin-top: 0px;
+    box-sizing: border-box;
+}
+
+.main {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.container1 {
+    width: 50vw;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background-color: rgba(94, 152, 224, 0.364);                        
+    font-weight: 900;
+    gap: 2px;
+}
+.con{
+    border: 1px solid black;
+    height: 120%;
+    width: 85%;
+    background-color: rgba(71, 201, 216, 0.201);
+    text-align: left;
+    font-size: 20px;
+    outline: none;
+    margin-top: 40%;
+}
+.li1{
+    display: flex;
+    gap: 10.9vw;
+}
+.con input{
+    outline: none;
+    border:none;
+    width: 15.73vw;
+    border-radius: 20px;
+    height: 35px;
+    border: 1px solid black; 
+}
+.in{
+    padding-left: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 1px;   
+}
+.in3{
+    padding-left: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    width: 100vw;   
+}
+.li2 input{
+    width: 100%;
+}
+.li2{
+    padding-bottom: 10px;
+}
+#card_type{
+    outline: none;
+    width: 100%;
+    height: 35px;
+    border-radius: 15px;
+}
+select #op1{
+    margin-left: 15px;
+    background-color:yellow;
+}
+.li4 select{
+    background-color:rgba(0, 0, 0, 0);
+}
+.li4 option{
+    border-bottom: 1px solid black;
+    padding-left: 1px; 
+}
+.li3{
+    font-size: 20px;
+    color: rgb(103, 103, 103);
+
+}
+.li4{
+    margin-top: 15px;
+}
+.li41{
+    margin-top: 15px;
+}
+.li4 #card_type{
+    margin-top: 8px;
+}
+.li5{
+    margin-top: 15px;
+}
+.lia{
+margin-top: 10px;
+width: 100%;
+}
+.li5 input{
+width: 100%;
+}
+.lib{
+margin-top: 10px;
+}
+.li6{
+    margin-top: 10px;
+}
+.li6 input{
+    width: 100%;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0);
+}
+.li7{
+    margin-top: 10px;
+}
+.pho input{
+width: 100%;
+background-color: rgba(0, 0, 0, 0);
+}
+.li8 input{
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+}
+.em{
+    margin-top: 10px;
+}
+.ema{
+    margin-top: 4px;
+}
+.li9{
+    display: flex;
+}
+.checkbox{
+    justify-content: left;
+}

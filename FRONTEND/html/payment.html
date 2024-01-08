@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/payment.css">
+</head>
+<body>
+    <div class="container">
+        <form id="paymentForm" method="get">
+          <h1>Payment Form</h1>
+          <hr>
+          <h2>Contact Details:</h2>
+          <p>
+            Name:
+            <input placeholder="" type="text" id="name1" required maxlength="20">
+          </p>
+          <fieldset>
+            <legend>Gender</legend>
+            <p>
+              Male:<input type="radio" name="gender" id="Male" maxlength="30">
+              Female:<input type="radio" name="gender" id="Female">
+            </p>
+          </fieldset>
+          <p>Address:<textarea placeholder="fill the full address" name="address" id="address" cols="50" rows="5"></textarea></p>
+          <p>Phone no<textarea  name="phone" id="phone" cols="10" rows="1" type="Number"  maxlength="10"></textarea></p> </p>
+          <p>Email:<input placeholder="@gmail.com" type="email" name="email" id="email"></p>
+          <p>Pincode:<input class="pin" placeholder="6 digit pin" type="text" name="pincode" id="pincode" maxlength="6"></p>
+          <h2>Payment Information</h2>
+      
+          <div style="display: flex;">
+            <p style="width: 50%;">Card Number <input class="card" placeholder="" type="text" name="card_number" id="card_number" maxlength="16"></p>
+            <p style="width: 50%;"><span style="margin-left: 4;">CVV</span> <input placeholder="" type="password" name="CVV" id="CVV" maxlength="3" required></p>
+          </div>
+          <p>Account holder name <input placeholder="" type="name" name="name" id="name" maxlength="25" required></p>
+          <p>EXPIERY DATE<input placeholder="*" type="date" name="date" id="date" maxlength="3" required></p>
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              // Retrieve stored values from sessionStorage
+              var firstName = sessionStorage.getItem("firstName");
+              var lastName = sessionStorage.getItem("lastName");
+              var address = sessionStorage.getItem("address");
+              var pincode = sessionStorage.getItem("pincode");
+
+              // Autofill form fields
+              document.getElementById("name1").value = firstName + " " + lastName;
+              document.getElementById("address").value = address;
+              document.getElementById("pincode").value = pincode;
+
+              // Clear sessionStorage after autofilling
+              sessionStorage.removeItem("firstName");
+              sessionStorage.removeItem("lastName");
+              sessionStorage.removeItem("address");
+              sessionStorage.removeItem("pincode");
+            });
+
+            document.getElementById("paymentForm").addEventListener("submit", function(event) {
+              event.preventDefault(); // Prevent form submission
+              alert("Payment Successful");
+              // Handle the payment logic here
+            });
+          </script>
+          <input type="submit" value="Pay Now">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("paymentForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form submission
+            alert("Payment Successful");
+            // Handle the payment logic here
+        });
+    </script>
+</body>
+</html>
